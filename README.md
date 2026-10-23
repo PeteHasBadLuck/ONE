@@ -12,7 +12,7 @@ ONE is an open-source dating app concept built around honest intentions, unrestr
 - Open development and transparent governance.
 
 ## Current status
-This repository is at the prototype stage. The UI uses fictional sample profiles and local demo interactions only. Authentication, database, photo storage, real messaging, payments, and production security are not implemented. Do not use it to collect real profiles or sensitive personal information.
+The UI is at the prototype stage. The sign-up/sign-in screen is a visual mock-up only. Authentication, database, photo storage, real messaging, payments, and production security are not implemented. Do not use it to collect real profiles or sensitive personal information.
 
 ## Roadmap
 - [ ] Refine requirements and validate user demand.
