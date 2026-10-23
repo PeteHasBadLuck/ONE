@@ -29,3 +29,7 @@ The intended model is a €1 one-time payment for full access. Donations and gra
 
 ## License
 No license has been selected yet. Until a license is added, standard copyright restrictions apply.
+
+
+## Payment page
+A static €1 one-time payment page preview is available at `payment.html`. The checkout button is intentionally not connected to a payment processor. Do not collect card details or claim payments are active until a secure hosted checkout and server-side payment verification are implemented.

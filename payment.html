@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f4ef">
+<title>ONE — One payment. Lifetime access.</title>
+<style>
+:root{--ink:#25231f;--muted:#716d66;--paper:#f7f4ef;--card:#fffdfa;--line:#e5dfd6;--accent:#416b55}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif;display:grid;place-items:center;padding:22px}
+main{width:min(100%,460px)}
+header{text-align:center;margin-bottom:24px}
+.logo{font:56px/1.1 Georgia,serif;letter-spacing:.12em;margin:0}
+.tagline{color:var(--muted);margin:8px 0 0}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 16px 48px #32251a0b}
+.kicker{text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:750;color:var(--accent);text-align:center}
+h1{font:500 31px/1.2 Georgia,serif;text-align:center;margin:8px 0}
+.intro{text-align:center;color:var(--muted);margin:0 0 22px}
+.price{text-align:center;padding:18px 12px;background:#f1eee7;border-radius:16px;margin-bottom:20px}
+.amount{font:500 58px/1.1 Georgia,serif;letter-spacing:-.04em}
+.once{font-size:14px;color:var(--muted);margin-top:5px}
+ul{list-style:none;padding:0;margin:0;display:grid;gap:13px}
+li{display:flex;gap:10px;align-items:flex-start}
+.check{color:var(--accent);font-weight:800}
+.primary{width:100%;border:0;border-radius:12px;background:var(--ink);color:white;padding:15px;font:inherit;font-weight:700;margin-top:24px;cursor:pointer}
+.primary:focus-visible,a:focus-visible{outline:3px solid #7b9b88;outline-offset:3px}
+.primary:hover{background:#403b35}
+.notice{display:none;margin-top:15px;padding:12px;border-radius:10px;background:#f5e9d9;color:#6e4930;font-size:13px}
+.fine{font-size:12px;color:var(--muted);text-align:center;margin:16px 0 0}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:18px}
+a{color:inherit}
+</style>
+</head>
+<body>
+<main>
+<header><p class="logo">ONE</p><p class="tagline">Less swiping. More meaning.</p></header>
+<section class="panel">
+<p class="kicker">Simple. Fair. For everyone.</p>
+<h1>One payment.<br>Lifetime access.</h1>
+<p class="intro">Dating should be about people, not paywalls.</p>
+<div class="price"><div class="amount">€1</div><div class="once">Pay once · No recurring charges</div></div>
+<ul>
+<li><span class="check" aria-hidden="true">✓</span><span>Full access to every core feature</span></li>
+<li><span class="check" aria-hidden="true">✓</span><span>No subscriptions, premium tiers, or boosts</span></li>
+<li><span class="check" aria-hidden="true">✓</span><span>No paid visibility and no ads</span></li>
+<li><span class="check" aria-hidden="true">✓</span><span>Adults aged 18 and over only</span></li>
+</ul>
+<button class="primary" id="pay" type="button">Continue to secure payment · €1</button>
+<p class="notice" id="notice" role="status">Secure checkout is not connected yet. No payment has been taken. This button is a preview only.</p>
+<p class="fine">Your payment will only be processed after a secure checkout provider is connected. Never enter card details on this preview page.</p>
+</section>
+<footer><a href="index.html">Back to account creation</a> · Honesty, privacy and genuine connections.</footer>
+</main>
+<script>
+document.getElementById('pay').addEventListener('click',function(){
+ const notice=document.getElementById('notice');
+ notice.style.display='block';
+ notice.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+</script>
+</body>
+</html>
