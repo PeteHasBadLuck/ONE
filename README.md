@@ -32,4 +32,4 @@ No license has been selected yet. Until a license is added, standard copyright r
 
 
 ## Payment page
-A static €1 one-time payment page preview is available at `payment.html`. The checkout button is intentionally not connected to a payment processor. Do not collect card details or claim payments are active until a secure hosted checkout and server-side payment verification are implemented.
+A static contribution page preview is available at `payment.html`. The current concept requires a minimum €1 contribution to create a profile. Because the contribution is mandatory, do not assume calling it a donation removes legal, tax, consumer, or refund obligations; get qualified local advice before launch. Checkout is not connected. Do not collect card details or claim payments are active until secure hosted checkout and server-side verification are implemented.
