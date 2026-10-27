@@ -1,0 +1,37 @@
+name: Build ONE Android preview
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  android-debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out ONE
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Install dependencies
+        run: npm install
+      - name: Build shared web app
+        run: npm run build:web
+      - name: Generate Android wrapper
+        run: npx cap add android
+      - name: Sync web app into Android wrapper
+        run: npx cap sync android
+      - name: Build debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: one-android-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
