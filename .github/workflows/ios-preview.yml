@@ -1,0 +1,45 @@
+name: Build ONE iOS preview
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ios-simulator:
+    runs-on: macos-latest
+    steps:
+      - name: Check out ONE
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Build shared web app
+        run: npm run build:web
+      - name: Generate iOS wrapper
+        run: npx cap add ios
+      - name: Sync web app into iOS wrapper
+        run: npx cap sync ios
+      - name: Build iOS Simulator app
+        run: |
+          xcodebuild \
+            -project ios/App/App.xcodeproj \
+            -scheme App \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build/ios-derived \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+      - name: Package simulator app
+        run: |
+          APP_PATH="build/ios-derived/Build/Products/Debug-iphonesimulator/App.app"
+          test -d "$APP_PATH"
+          ditto -c -k --sequesterRsrc --keepParent "$APP_PATH" build/ONE-iOS-Simulator.zip
+      - name: Upload iOS Simulator app
+        uses: actions/upload-artifact@v4
+        with:
+          name: one-ios-simulator-preview
+          path: build/ONE-iOS-Simulator.zip
+          if-no-files-found: error
