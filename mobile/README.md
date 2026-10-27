@@ -7,7 +7,9 @@ This repository is being prepared for one shared web experience packaged for iOS
 - [x] Capacitor configuration and shared package scripts
 - [x] Web bundle build script (copies the current HTML pages into `www/`)
 - [x] Installable web-app manifest and ONE icon
-- [ ] Native Android/iOS projects generated and tested
+- [x] iOS Simulator build workflow configured
+- [x] Unsigned iPhone device compile check added to CI (not installable until signed)
+- [ ] Signed iPhone build and TestFlight distribution
 - [ ] Ubuntu Touch Clickable package built and tested on a device
 - [ ] Real backend, authentication, synced profiles/messages, moderation, and payments
 
@@ -33,4 +35,4 @@ Ubuntu Touch uses a separate packaging path; Capacitor does not target Ubuntu To
 
 ## Phone-only workflow
 
-GitHub can hold the source and review changes from a phone, but the phone itself cannot run Xcode or a full Android build toolchain. A cloud development environment or CI build runner will be needed to produce installable native packages. Never commit signing keys, store credentials, or payment secrets to this repository.
+GitHub can hold the source and review changes from a phone, but the phone itself cannot run Xcode or a full Android build toolchain. The iOS workflow builds a Simulator preview and attempts an unsigned device-target compile check in cloud macOS CI. The unsigned device artifact is only a compile-check output, not installable on an iPhone. A signed build and Apple distribution setup are still required for TestFlight. Never commit signing keys, store credentials, or payment secrets to this repository.
