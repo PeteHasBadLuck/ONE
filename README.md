@@ -12,7 +12,7 @@ ONE is an open-source dating app concept built around honest intentions, unrestr
 - Open development and transparent governance.
 
 ## Current status
-The UI is at the prototype stage. The sign-up/sign-in screen is a visual mock-up only. Authentication, database, photo storage, real messaging, payments, and production security are not implemented. Do not use it to collect real profiles or sensitive personal information.
+The repository contains a concept landing page (`index.html`), profile setup/editor (`profile.html`), local dashboard (`dashboard.html`), current interactive demo (`app.html`), static payment preview (`payment.html`), and an older demo (`prototype.html`). The interactive demo stores activity in this browser only. Sample people and incoming likes are fictional; messages are not sent to other people. Pass, block, and report are local demo actions and do not notify a safety team. Authentication, database-backed profile storage, real messaging, payments, and production admin protection are not implemented. Do not use it to collect real profiles or sensitive personal information.
 
 ## Roadmap
 - [ ] Refine requirements and validate user demand.
@@ -20,7 +20,7 @@ The UI is at the prototype stage. The sign-up/sign-in screen is a visual mock-up
 - [ ] Establish privacy, safety, and moderation requirements.
 - [ ] Choose production architecture and threat model.
 - [ ] Implement authentication and private profile storage.
-- [ ] Implement matching and messaging with blocking/reporting.
+- [ ] Implement server-backed matching and messaging with enforceable blocking/reporting (the current controls are demo-only).
 - [ ] Conduct security, privacy, accessibility, and legal review.
 - [ ] Run a limited pilot before public launch.
 
