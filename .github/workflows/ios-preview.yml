@@ -17,6 +17,13 @@ jobs:
         run: npm install
       - name: Build shared web app
         run: npm run build:web
+      - name: Verify web bundle contains required pages
+        run: |
+          test -f www/index.html
+          test -f www/profile.html
+          test -f www/app.html
+          test -f www/manifest.webmanifest
+          test -f www/icons/one.svg
       - name: Generate iOS wrapper
         run: npx cap add ios
       - name: Sync web app into iOS wrapper
@@ -58,4 +65,10 @@ jobs:
         with:
           name: one-ios-simulator-preview
           path: build/ONE-iOS-Simulator.zip
+          if-no-files-found: error
+      - name: Upload unsigned iPhone device build
+        uses: actions/upload-artifact@v4
+        with:
+          name: one-iphone-device-build-unsigned
+          path: build/ONE-iPhone-Unsigned.zip
           if-no-files-found: error
