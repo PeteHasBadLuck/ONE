@@ -81,7 +81,7 @@ async function bodyJson<T>(request: Request): Promise<T | null> {
 
 function ageOn(dateString: string): number {
   const birth = new Date(dateString + "T00:00:00Z");
-  if (!Number.isFinite(birth.getTime())) return -1;
+  if (!Number.isFinite(birth.getTime()) || birth.toISOString().slice(0, 10) !== dateString) return -1;
   const now = new Date();
   let age = now.getUTCFullYear() - birth.getUTCFullYear();
   const beforeBirthday = now.getUTCMonth() < birth.getUTCMonth() ||
