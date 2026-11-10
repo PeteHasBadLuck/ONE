@@ -5,7 +5,7 @@
   "compatibility_date": "2026-11-11",
   "compatibility_flags": ["nodejs_compat"],
   "vars": {
-    "APP_ORIGINS": "capacitor://localhost,http://localhost"
+    "APP_ORIGINS": "https://one.weathered-river-1778.workers.dev,capacitor://localhost,http://localhost"
   },
   "d1_databases": [
     {

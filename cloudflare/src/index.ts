@@ -76,7 +76,7 @@ async function currentUser(identity: Identity, env: Env): Promise<User> {
 }
 
 async function bodyJson<T>(request: Request): Promise<T | null> {
-  try { return await request.json<T>(); } catch { return null; }
+  try { return await request.json() as T; } catch { return null; }
 }
 
 function ageOn(dateString: string): number {
@@ -150,7 +150,7 @@ async function handle(request: Request, env: Env): Promise<Response> {
   if (path === "/api/discover" && method === "GET") {
     const limit = Math.min(40, Math.max(1, Number(url.searchParams.get("limit") ?? 20) || 20));
     const results = await env.DB.prepare(
-      "SELECT p.user_id AS id, p.display_name AS displayName, p.birth_date AS birthDate, " +
+      "SELECT p.user_id AS id, p.display_name AS displayName, CAST((julianday('now') - julianday(p.birth_date)) / 365.2425 AS INTEGER) AS age, " +
       "p.city, p.bio, p.intention FROM profiles p " +
       "WHERE p.published=1 AND p.user_id<>? " +
       "AND NOT EXISTS (SELECT 1 FROM blocks b WHERE " +
