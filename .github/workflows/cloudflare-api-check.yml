@@ -1,0 +1,32 @@
+name: Cloudflare API checks
+
+on:
+  pull_request:
+    paths:
+      - "cloudflare/**"
+      - ".github/workflows/cloudflare-api-check.yml"
+  push:
+    branches: [main]
+    paths:
+      - "cloudflare/**"
+
+permissions:
+  contents: read
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cloudflare
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: cloudflare/package-lock.json
+      - name: Install dependencies
+        run: npm install
+      - name: TypeScript check
+        run: npm run typecheck
